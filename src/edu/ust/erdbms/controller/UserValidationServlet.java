@@ -23,7 +23,6 @@ public class UserValidationServlet extends HttpServlet {
 	public void init() throws ServletException {
 		connection = SQLOperations.getConnection();
 		if (connection != null) {
-			getServletContext().setAttribute("dbConnection", connection);
 			System.out.println("connection is READY.");
 		} else {
 			System.err.println("connection is NULL.");
