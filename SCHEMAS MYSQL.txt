@@ -1,0 +1,48 @@
+CREATE USER 'ics123_user3csc'@'localhost' Identified by 'ics123_user3csc';
+GRANT ALL PRIVILEGES ON * . * TO 'ics123_user3csc'@'localhost';
+
+create database ProductsDB;
+USE ProductsDB;
+
+
+/****** Object:  Table dbo.Product    Script Date: 11/11/2015 22:00:43 ******/
+
+/*FOR Products:*/
+CREATE TABLE `ProductsDB`.`Product` (
+  `product_code` INT NOT NULL COMMENT '',
+  `delivery_date` DATETIME NOT NULL COMMENT '',
+  `date_received` DATETIME NOT NULL COMMENT '',
+  `delivery_charge` VARCHAR(45) NOT NULL COMMENT '',
+  `DR_SI` VARCHAR(100) NOT NULL COMMENT '',
+  `quantity` INT NOT NULL COMMENT '',
+  `product_description` VARCHAR(999) NULL COMMENT '',
+  `unit_price` DOUBLE NOT NULL COMMENT '',
+  `discount` DOUBLE NULL COMMENT '',
+  `total_amount` DOUBLE NULL COMMENT '',
+  `mode_of_payment` VARCHAR(45) NOT NULL COMMENT '',
+  PRIMARY KEY (`product_code`)  COMMENT '');
+  
+/*FOR LOGIN:*/
+CREATE TABLE `ProductsDB`.`Accounts` (
+  `username` VARCHAR(200) NOT NULL COMMENT '',
+  `password` VARCHAR(200) NOT NULL COMMENT '',
+  `email` VARCHAR(300) NOT NULL COMMENT '',
+  PRIMARY KEY (`username`)  COMMENT '');
+
+  /*FOR SELL:*/
+	CREATE TABLE `Sell` (
+  `product_code` int(11) NOT NULL,
+  `unit_price` double NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `product_description` varchar(999) DEFAULT NULL,
+  `discount` double DEFAULT NULL,
+  `total_amount` double DEFAULT NULL,
+  `note_quantity` int(11) DEFAULT NULL,
+  `note_description` varchar(999) DEFAULT NULL,
+  `customer_name` varchar(200) NOT NULL,
+  `tin` varchar(200) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `date` datetime NOT NULL,
+  `mode_of_payment` varchar(45) NOT NULL,
+  PRIMARY KEY (`product_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
