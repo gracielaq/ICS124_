@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,9 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import edu.ust.erdbms.model.ProductBean;
 import edu.ust.erdbms.utility.sql.SQLOperations;
 
-/**
- * Servlet implementation class ProductMaintenanceServlet
- */
+
 @WebServlet("/productmaintenance.html")
 public class ProductMaintenanceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -38,9 +35,6 @@ Connection connection;
 		doPost(request,response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			RequestDispatcher dispatcher = null; 
