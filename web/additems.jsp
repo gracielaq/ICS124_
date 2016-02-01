@@ -14,8 +14,9 @@
 	<p>Date Received<input type="date" name="date_received" required="required"/></p>
 	<p>DR/SI #<input type="number" name="dr_si" required="required"/>
 	<p>Quantity<input type="number" name="quantity" value="0" onblur="recalculateSum();" id="qty" required="required"/></p>
-	<p>Product Description<textarea name="description" rows= "5" cols="10">Enter description here.</textarea>
-	
+	<p>Delivery Charge<input type="number" name="delivery_charge"/></p>
+	<p>Supplier:<input type="text" name="supplier"/></p>
+	<p>Product Description<textarea name="description" rows= "5" cols="10">Enter product description here.</textarea>
 	<p>Unit Price<input type="number" name="unit_price" value="0" onblur="recalculateSum();" id="prc" required="required"/>
 	<p>Discounts<input type="number" name="discount"/></p>
 	<p>Total Amount <input id="Total" value="0"/> </p>
