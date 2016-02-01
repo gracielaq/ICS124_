@@ -10,10 +10,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>UST 3CSC Employee Listing</title>
+<title>Products</title>
 </head>
 <body>
-<%@include file="searchandsortby.jsp"  %>
+<%@include file="searchAndSortBy.jsp"  %>
 
 	<h1>PRODUCTS</h1>
 	<div style="height:200px;overflow:auto;">
