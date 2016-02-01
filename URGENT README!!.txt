@@ -6,4 +6,4 @@ import niyo dapat muna to
 3)JRE System Library (add library, sunod jre system library, sunod yung workspace default)
 
 
-Yun lang.
+Yun lang. sunod exit then open yung eclipse ulit.
