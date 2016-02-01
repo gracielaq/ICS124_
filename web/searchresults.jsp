@@ -9,10 +9,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Search Result</title>
 </head>
 <body>
-<%@include file="searchandsortby.jsp"  %>
+<%@include file="searchAndSortBy.jsp"  %>
 	<h1>PRODUCTS</h1>
 	<% if(productrecords.next()){%>
 	<table height ="20" border="1" width="100%" cellpadding="3" cellspacing="3">
