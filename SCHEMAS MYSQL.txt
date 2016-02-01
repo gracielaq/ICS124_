@@ -50,3 +50,23 @@ CREATE TABLE `ProductsDB`.`Accounts` (
   `supplier` varchar(100) NOT NULL,
   PRIMARY KEY (`product_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*FOR OLD*/
+CREATE TABLE `Product_old` (
+  `product_code` int(11) NOT NULL,
+  `supplier` varchar(200) NOT NULL,
+  `delivery_date` datetime NOT NULL,
+  `date_received` datetime NOT NULL,
+  `delivery_charge` varchar(45) NOT NULL,
+  `DR_SI` varchar(100) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `product_description` varchar(999) DEFAULT NULL,
+  `unit_price` double NOT NULL,
+  `discount` double DEFAULT NULL,
+  `total_amount` double DEFAULT NULL,
+  `mode_of_payment` varchar(45) NOT NULL,
+`supplier` varchar(100) NOT NULL,
+  PRIMARY KEY (`product_code`),
+
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
