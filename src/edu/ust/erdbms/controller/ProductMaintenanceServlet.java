@@ -22,11 +22,15 @@ import edu.ust.erdbms.utility.sql.SQLOperations;
 public class ProductMaintenanceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 Connection connection;
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
+
 	public void init(/*ServletConfig config*/) throws ServletException {
 		connection=SQLOperations.getConnection();
+		if(connection==null){
+			System.out.print("Connection is null");
+		}
+		else{
+			System.out.print("Connected :D");
+		}
 	}
 
 	
