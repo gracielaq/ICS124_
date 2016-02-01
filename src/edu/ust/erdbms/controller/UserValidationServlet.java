@@ -41,11 +41,10 @@ public class UserValidationServlet extends HttpServlet {
 			String password=request.getParameter("password");
 			
 			if(SQLOperations.loginCheck(username, password, connection)){
-				System.out.println("successful connection: l");
+				System.out.println("successful connection!");
 					
 				AccountBean admin = 
 				  SQLOperations.searchAdmin(username, connection);
-				
 				request.setAttribute("Admin", admin);
 				
 				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
