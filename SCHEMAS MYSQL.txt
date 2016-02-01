@@ -8,19 +8,22 @@ USE ProductsDB;
 /****** Object:  Table dbo.Product    Script Date: 11/11/2015 22:00:43 ******/
 
 /*FOR Products:*/
-CREATE TABLE `ProductsDB`.`Product` (
-  `product_code` INT NOT NULL COMMENT '',
-  `delivery_date` DATETIME NOT NULL COMMENT '',
-  `date_received` DATETIME NOT NULL COMMENT '',
-  `delivery_charge` VARCHAR(45) NOT NULL COMMENT '',
-  `DR_SI` VARCHAR(100) NOT NULL COMMENT '',
-  `quantity` INT NOT NULL COMMENT '',
-  `product_description` VARCHAR(999) NULL COMMENT '',
-  `unit_price` DOUBLE NOT NULL COMMENT '',
-  `discount` DOUBLE NULL COMMENT '',
-  `total_amount` DOUBLE NULL COMMENT '',
-  `mode_of_payment` VARCHAR(45) NOT NULL COMMENT '',
-  PRIMARY KEY (`product_code`)  COMMENT '');
+CREATE TABLE `product` (
+  `product_code` int(11) NOT NULL,
+  `delivery_date` datetime NOT NULL,
+  `date_received` datetime NOT NULL,
+  `delivery_charge` varchar(45) NOT NULL,
+  `DR_SI` varchar(100) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `product_description` varchar(999) DEFAULT NULL,
+  `unit_price` double NOT NULL,
+  `discount` double DEFAULT NULL,
+  `total_amount` double DEFAULT NULL,
+  `mode_of_payment` varchar(45) NOT NULL,
+  `supplier` varchar(100) NOT NULL,
+  PRIMARY KEY (`product_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
   
 /*FOR LOGIN:*/
 CREATE TABLE `ProductsDB`.`Accounts` (
@@ -30,7 +33,7 @@ CREATE TABLE `ProductsDB`.`Accounts` (
   PRIMARY KEY (`username`)  COMMENT '');
 
   /*FOR SELL:*/
-	CREATE TABLE `Sell` (
+  CREATE TABLE `sell` (
   `product_code` int(11) NOT NULL,
   `unit_price` double NOT NULL,
   `quantity` int(11) NOT NULL,
@@ -44,20 +47,6 @@ CREATE TABLE `ProductsDB`.`Accounts` (
   `address` varchar(200) NOT NULL,
   `date` datetime NOT NULL,
   `mode_of_payment` varchar(45) NOT NULL,
-  PRIMARY KEY (`product_code`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/** FOR PRODUCT OLD **/
-CREATE TABLE `Product_old` (
-  `product_code` int(11) NOT NULL,
-  `delivery_date` datetime NOT NULL,
-  `date_received` datetime NOT NULL,
-  `delivery_charge` varchar(45) NOT NULL,
-  `DR_SI` varchar(100) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `product_description` varchar(999) DEFAULT NULL,
-  `unit_price` double NOT NULL,
-  `discount` double DEFAULT NULL,
-  `total_amount` double DEFAULT NULL,
-  `mode_of_payment` varchar(45) NOT NULL,
+  `supplier` varchar(100) NOT NULL,
   PRIMARY KEY (`product_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
