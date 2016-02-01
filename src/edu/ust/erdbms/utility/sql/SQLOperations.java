@@ -47,8 +47,11 @@ public class SQLOperations implements SQLCommands {
 		return (connection!=null)?connection:getDBConnection();
 	}
 	
-	public static ResultSet getAllSold(Connection connection) {
-		ResultSet rs = null;
+	//to do!!
+	public void/*static ResultSet*/ getAllSold(Connection connection) {
+		
+		
+		/*ResultSet rs = null;
 		try {
 			Statement stmt = connection.createStatement();
 			rs = stmt.executeQuery(GET_ALL_SOLD);  
@@ -57,11 +60,11 @@ public class SQLOperations implements SQLCommands {
 			  + sqle.getMessage());
 			return rs; 
 		}	
-		return rs;
+		return rs;*/
 	}
-	
-	public static boolean addSoldProduct(ProductBean productbean, Connection connection){
-			try {
+	//to do!!
+	public static void /*boolean*/ addSoldProduct(ProductBean productbean, Connection connection){
+			/*try {
 		        PreparedStatement pstmt = connection.prepareStatement(ADD_SOLD);
 		        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 		        pstmt.setString(1, productbean.getItem()); 
@@ -77,7 +80,7 @@ public class SQLOperations implements SQLCommands {
 				System.out.println("SQLException - addItem: " + sqle.getMessage());
 				return false; 
 			}	
-			return true;
+			return true;*/
 			
 		}
 	
@@ -114,21 +117,59 @@ public class SQLOperations implements SQLCommands {
 		
 	}
 	
+	//FOR PRODUCTS DB
+	/*CREATE TABLE `product` (
+  `product_code` int(11) NOT NULL,
+  `delivery_date` datetime NOT NULL,
+  `date_received` datetime NOT NULL,
+  `delivery_charge` varchar(45) NOT NULL,
+  `DR_SI` varchar(100) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `product_description` varchar(999) DEFAULT NULL,
+  `unit_price` double NOT NULL,
+  `discount` double DEFAULT NULL,
+  `total_amount` double DEFAULT NULL,
+  `mode_of_payment` varchar(45) NOT NULL,
+  `supplier` varchar(200) NOT NULL,
+  PRIMARY KEY (`product_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;*/
+	public static ResultSet getAllProducts(Connection connection){
+		try {
+			PreparedStatement statement = connection.prepareStatement(GET_ALL_PRODUCTS);
+			ResultSet rs = statement.executeQuery();
+			return rs;
+		} catch (SQLException e) {
+			System.out.print("getAllProducts Method Error:");
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
 	
-	public static int updateItem(ProductBean product, 
-			int id, Connection connection) {
+	public static int updateProduct(ProductBean product, 
+			int product_code, Connection connection) {
+		/*String UPDATE_PRODUCT = "update product set delivery_date=?,"
+			+ "date_received=?," + "delivery_charge=?," + "DR_SI=?,"
+			+ "quantity=?," + "product_description=?," + "unit_price=?,"
+			+ "discount=?," + "total_amount=?," + "mode_of_payment=?,"
+			+ "supplier=?" + "where product_code=?";*/
 			int updated = 0;
 			try {
 				connection.setAutoCommit(false);
 		        PreparedStatement pstmt = 
-		        	connection.prepareStatement(UPDATE_ITEM);
-		        pstmt.setDate(1, product.getDate_delivered()); 
-		        pstmt.setString(2, product.getItem());
-		        pstmt.setString(3, product.getManufacturer());
-		        pstmt.setInt(4, product.getQuantity()); 
-		        pstmt.setDouble(5, product.getProduct_price()); 
-		        pstmt.setDouble(6, product.getTotal_price()); 
-		        pstmt.setInt(7, id); 
+		        	connection.prepareStatement(UPDATE_PRODUCT);
+		        pstmt.setDate(1, product.getDelivery_date()); 
+		        pstmt.setDate(2, product.getDate_recieved());
+		        pstmt.setString(3, product.getDelivery_charge());
+		        pstmt.setString(4, product.getDR_SI()); 
+		        pstmt.setInt(5, product.getQuantity()); 
+		        pstmt.setString(6, product.getProduct_description()); 
+		        pstmt.setDouble(7, product.getUnit_price()); 
+		        pstmt.setDouble(8, product.getDiscount());
+		        pstmt.setDouble(9, product.getTotal_amount());
+		        pstmt.setString(10, product.getMode_of_payment());
+		        pstmt.setString(11, product.getSupplier());
+		        pstmt.setInt(12, product.getProduct_code());
 		        updated = pstmt.executeUpdate();   
 		        connection.commit();
 			} catch (SQLException sqle) {
@@ -146,38 +187,64 @@ public class SQLOperations implements SQLCommands {
 			return updated;
 		}
 	
-	public static boolean addItem(ProductBean productbean, Connection connection){
+	public static boolean addProduct(ProductBean product, Connection connection){
 		try {
-	        PreparedStatement pstmt = connection.prepareStatement(ADD_ITEM);
+			/*String ADD_PRODUCT = "insert into Product(" + "delivery_date,"
+					+ "date_recieved, " + "delivery_charge," + "DR_SI, " + "quantity,"
+					+ "product_description," + "unit_price," + "discount,"
+					+ "total_amount," + "mode_of_payment," + "supplier,"
+					+ "product_code" + ") values(?,?,?,?,?,?,?,?,?,?,?,?)";
+					*/
+	        PreparedStatement pstmt = connection.prepareStatement(ADD_PRODUCT);
 	        
-	        pstmt.setDate(1, productbean.getDate_delivered()); 
-	        pstmt.setString(2, productbean.getItem());
-	        pstmt.setString(3, productbean.getManufacturer());
-	        pstmt.setInt(4, productbean.getProduct_code());
-	        pstmt.setInt(5, productbean.getQuantity());
-	        pstmt.setDouble(6,productbean.getProduct_price());
-	        pstmt.setDouble(7, productbean.getTotal_price());
-	        pstmt.executeUpdate(); // execute insert statement  
+	        pstmt.setDate(1, product.getDelivery_date()); 
+	        pstmt.setDate(2, product.getDate_recieved());
+	        pstmt.setString(3, product.getDelivery_charge());
+	        pstmt.setString(4, product.getDR_SI()); 
+	        pstmt.setInt(5, product.getQuantity()); 
+	        pstmt.setString(6, product.getProduct_description()); 
+	        pstmt.setDouble(7, product.getUnit_price()); 
+	        pstmt.setDouble(8, product.getDiscount());
+	        pstmt.setDouble(9, product.getTotal_amount());
+	        pstmt.setString(10, product.getMode_of_payment());
+	        pstmt.setString(11, product.getSupplier());
+	        pstmt.setInt(12, product.getProduct_code());
+	        pstmt.execute();
 		} catch (SQLException sqle) {
-			System.out.println("SQLException - addItem: " + sqle.getMessage());
+			System.out.println("SQLException - addProduct: " + sqle.getMessage());
 			return false; 
 		}	
 		return true;
 		
 	}
 	
-	public static ResultSet getAllItems(Connection connection) {
-		ResultSet rs = null;
-		try {
-			Statement stmt = connection.createStatement();
-			rs = stmt.executeQuery(GET_ALL_ITEMS);  
-		} catch (SQLException sqle) {
-			System.out.println("SQLException - getALLEmployees: " 
-			  + sqle.getMessage());
-			return rs; 
-		}	
-		return rs;
-	}
+	public static ProductBean searchProduct(int id, 
+			Connection connection) {
+			
+		ProductBean productbean=null;
+			 
+			try {
+		        PreparedStatement pstmt = 
+		        	connection.prepareStatement(SEARCH_PRODUCT);
+		        pstmt.setInt(1, id);             
+		        ResultSet rs  = pstmt.executeQuery();
+		        
+		        while (rs.next()) { 
+		        	productbean = BeanFactory.getInstance(rs.getInt("product_code"),
+		        			rs.getInt("quantity"), rs.getDouble("unit_price"),
+		        			rs.getDouble("discount"), rs.getDate("delivery_date"),
+		        			rs.getDate("date_recieved"),rs.getString("delivery_charge"),
+		        			rs.getString("DR_SI"), rs.getString("product_description"), 
+		        			rs.getString("mode_of_payment"), rs.getString("supplier"));
+		        	
+		        }
+			} catch (SQLException sqle) {
+				System.out.println("SQLException - searchEmployee: " 
+						+ sqle.getMessage());
+				return productbean; 
+			}	
+			return productbean;
+		}
 	
 	public static synchronized int deleteItem(int id, Connection connection) {
 		int updated = 0;
@@ -201,33 +268,7 @@ public class SQLOperations implements SQLCommands {
 		return updated;
 	}
 	
-	public static ProductBean searchProduct(int id, 
-			Connection connection) {
-			
-			ProductBean productbean = new ProductBean();
-			 
-			try {
-		        PreparedStatement pstmt = 
-		        	connection.prepareStatement(SEARCH_ITEM);
-		        pstmt.setInt(1, id);             
-		        ResultSet rs  = pstmt.executeQuery();
-		        
-		        while (rs.next()) { 
-		        	productbean.setDate_delivered(rs.getDate("date_delivered"));
-		        	productbean.setItem(rs.getString("item"));
-		        	productbean.setManufacturer(rs.getString("manufacturer"));
-		        	productbean.setProduct_code(id);
-		        	productbean.setQuantity(rs.getInt("quantity"));
-		        	productbean.setProduct_price(rs.getDouble("product_price"));
-		        	productbean.compute();
-		        }
-			} catch (SQLException sqle) {
-				System.out.println("SQLException - searchEmployee: " 
-						+ sqle.getMessage());
-				return productbean; 
-			}	
-			return productbean;
-		}
+
 	
 	public static int getTotalQuantity(Connection connection){
 		int total=0;
