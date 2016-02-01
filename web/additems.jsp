@@ -1,22 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Add Product</title>
 </head>
 <body>
 <form action="addItems.html" method="post">
-
-<p>item<input type="text" name="item" required="required"/></p>
-<p>price<input type="number" name="product_price" required="required"/>
-<p>quantity<input type="number" name="quantity" required="required"/></p>
-<p>Product Code<input type="number" name="product_code" required="required"/></p>
-<p>Supplier<input type="text" name="manufacturer" required="required"/></p>
-<p>date Delivered<input type="date" name="date_delivered" required="required"/></p>
+	
+	<p>Product Code<input type="number" name="product_code" required="required"/></p>
+	<p>Delivery Date<input type="date" name="delivery_date" required="required"/></p>
+	<p>Date Received<input type="date" name="date_received" required="required"/></p>
+	<p>DR/SI #<input type="number" name="dr_si" required="required"/>
+	<p>Quantity<input type="number" name="quantity" value="0" onblur="recalculateSum();" id="qty" required="required"/></p>
+	<p>Product Description<textarea name="description" rows= "5" cols="10">Enter description here.</textarea>
+	
+	<p>Unit Price<input type="number" name="unit_price" value="0" onblur="recalculateSum();" id="prc" required="required"/>
+	<p>Discounts<input type="number" name="discount"/></p>
+	<p>Total Amount <input id="Total" value="0"/> </p>
+	<p>Check Number:<input type="text" name="check"/></p>
 <p><input type="submit" value="add"/>
 </form>
+<script>
+  function recalculateSum()
+    {
+        var num1 = parseInt(document.getElementById("qty").value);
+        var num2 = parseInt(document.getElementById("prc").value);
+        document.getElementById("Total").value = num1 * num2;
+
+    }
+</script>
+
 <a href="index.html">back to index</a>
 </body>
 </html>
