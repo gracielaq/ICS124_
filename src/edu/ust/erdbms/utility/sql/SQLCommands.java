@@ -17,8 +17,8 @@ public interface SQLCommands {
 	String GET_ALL_SOLD = "select * from sold";
 	
 	/*LOGIN COMMANDS*/
-	String LOGIN_CHECK="select username, password, email from accounts where username=? and password=?";
-	String SEARCH_ADMIN="select * from accounts where username=?";
+	String LOGIN_CHECK="select username, password, email from accounts_admin where username=? and password=?";
+	String SEARCH_ADMIN="select * from accounts_admin where username=?";
 	/*FOR Products:*/
 	/*CREATE TABLE `product` (
 	  `product_code` int(11) NOT NULL,
