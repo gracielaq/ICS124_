@@ -42,17 +42,13 @@ public class UserValidationServlet extends HttpServlet {
 			
 			if(SQLOperations.loginCheck(username, password, connection)){
 				System.out.println("successful connection: l");
-				
-				
+					
 				AccountBean admin = 
 				  SQLOperations.searchAdmin(username, connection);
 				
-				HttpSession session=request.getSession();
-				session.setAttribute("admin", admin);
 				request.setAttribute("Admin", admin);
 				
-				getServletContext().getRequestDispatcher("/index.jsp")
-				.forward(request, response);
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 			}
 			
 		}
