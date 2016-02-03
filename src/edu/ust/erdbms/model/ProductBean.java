@@ -20,7 +20,7 @@ package edu.ust.erdbms.model;
 
 public class ProductBean {
 	private int product_code, quantity;
-	private double unit_price, discount, total_amount;
+	private double unit_price, discount_add, total_amount;
 	private java.sql.Date delivery_date, date_recieved;
 	private String delivery_charge, DR_SI, product_description,
 			mode_of_payment, supplier;
@@ -28,7 +28,7 @@ public class ProductBean {
 	public void compute() {
 		// (QTY * Unit Price) ­ (QTY* Unit Price*Discount)
 		setTotal_amount((getQuantity() * getUnit_price())
-				- (getQuantity() * getUnit_price() * getDiscount()));
+				- (getQuantity() * getUnit_price() * getDiscount_add()));
 	}
 
 	public int getProduct_code() {
@@ -55,13 +55,7 @@ public class ProductBean {
 		this.unit_price = unit_price;
 	}
 
-	public double getDiscount() {
-		return discount;
-	}
-
-	public void setDiscount(double discount) {
-		this.discount = discount;
-	}
+	
 
 	public double getTotal_amount() {
 		return total_amount;
@@ -125,6 +119,14 @@ public class ProductBean {
 
 	public void setSupplier(String supplier) {
 		this.supplier = supplier;
+	}
+
+	public double getDiscount_add() {
+		return discount_add;
+	}
+
+	public void setDiscount_add(double discount_add) {
+		this.discount_add = discount_add;
 	}
 
 }

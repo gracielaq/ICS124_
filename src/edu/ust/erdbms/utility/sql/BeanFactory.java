@@ -1,6 +1,7 @@
 package edu.ust.erdbms.utility.sql;
 
 import edu.ust.erdbms.model.ProductBean;
+import edu.ust.erdbms.model.SoldBean;
 
 public class BeanFactory {
 	/*FOR Products:*/
@@ -30,7 +31,7 @@ public class BeanFactory {
 		ProductBean bean = new ProductBean(); 
 		bean.setDelivery_date(delivery_date);
 		bean.setDate_recieved(date_recieved);
-		bean.setDiscount(discount);
+		bean.setDiscount_add(discount);
 		bean.setMode_of_payment(mode_of_payment);
 		bean.setDR_SI(DR_SI);
 		bean.setProduct_description(product_description);
@@ -41,4 +42,46 @@ public class BeanFactory {
 		bean.compute();
 		return bean;
 	}
+	
+	/*FOR SELL:
+	  CREATE TABLE `Sell` (
+	  `product_code` int(11) NOT NULL,
+	  `unit_price` double NOT NULL,
+	  `quantity` int(11) NOT NULL,
+	  `product_description` varchar(999) DEFAULT NULL,
+	  `discount_sell` double DEFAULT NULL,
+	  `total_amount` double DEFAULT NULL,
+	  `note_quantity` int(11) DEFAULT NULL,
+	  `note_description` varchar(999) DEFAULT NULL,
+	  `customer_name` varchar(200) NOT NULL,
+	  `tin` varchar(200) NOT NULL,
+	  `address` varchar(200) NOT NULL,
+	  `date` datetime NOT NULL,
+	  `mode_of_payment` varchar(45) NOT NULL,
+	  PRIMARY KEY (`product_code`)
+	) ENGINE=InnoDB DEFAULT CHARSET=latin1;*/
+	
+	public static SoldBean getInstance(int product_code,double unit_price, int quantity,
+			String product_description, double discount_sell,  int note_quantity,
+			String note_description, String customer_name, String tin, String address, java.sql.Date date,
+			String mode_of_payment){
+				
+				SoldBean bean = new SoldBean(); 
+				bean.setProduct_code(product_code);
+				bean.setUnit_price(unit_price);
+				bean.setQuantity(quantity);
+				bean.setProduct_description(product_description);
+				bean.setDiscount_sell(discount_sell);
+				bean.setNote_quantity(note_quantity);
+				bean.setNote_description(note_description);
+				bean.setCustomer_name(customer_name);
+				bean.setTin(tin);
+				bean.setDate(date);
+				bean.setAddress(address);
+				bean.setMode_of_payment(mode_of_payment);
+				
+				bean.setAddress(address);
+				bean.compute();
+				return bean;
+			}
 }
