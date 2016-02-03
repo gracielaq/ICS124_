@@ -26,14 +26,29 @@
 	<p>Discounts<input type="number" name="discount"/></p>
 	<p>Total Amount <input id="Total" value="0"/> </p>
 	<p>Mode of Payment</p>
-	 <input type="radio" name="mode_of_payment" value="cash" checked>Cash <br>
-	 <input type="radio" name="mode_of_payment" value="check">Check<br>
+	 <input type="radio"  onclick="javascript:yesnoCheck();" name="mode_of_payment" value="cash" id="noCheck">Cash <br>
+	 <input type="radio" onclick="javascript:yesnoCheck();" name="mode_of_payment" value="check" id="yesCheck" >Check<br>
+	 <div id="ifYes" style="visibility:hidden">
+    <p>Check Number:<input type="text" name="check"/></p>
+</div>
 	<!-- Lalabas lang check number if pinili sa M.O.P. ay check :)  -->
-	<p>Check Number:<input type="text" name="check"/></p>
+	
+
+
+
+
 
 <p><input type="submit" value="add"/>
 </form>
-<script>
+<script type="text/javascript">
+
+
+function yesnoCheck() {
+    if (document.getElementById('yesCheck').checked) {
+        document.getElementById('ifYes').style.visibility = 'visible';
+    } else {
+        document.getElementById('ifYes').style.visibility = 'hidden';
+    }}
   function recalculateSum()
     {
         var num1 = parseInt(document.getElementById("qty").value);
