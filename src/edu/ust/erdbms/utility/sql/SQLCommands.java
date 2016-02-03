@@ -42,7 +42,7 @@ public interface SQLCommands {
 			+ "unit_price, " 
 			+ "quantity," 
 			+ "product_description, "
-			+ "discount,"
+			+ "discount_sell,"
 			+ "total_amount,"
 			+"note_quantity,"
 			+ "note_description,"
@@ -61,7 +61,7 @@ public interface SQLCommands {
 			+ "quantity like ? OR "
 			+ "product_description like ? OR "
 			+ "unit_price like ? OR "
-			+ "discount like ? OR "
+			+ "discount_sell like ? OR "
 			+ "total_amount like ? OR "
 			+ "checkNumber like ? OR "
 			+ " product_code like ?";
@@ -70,33 +70,34 @@ public interface SQLCommands {
 	
 	
 	
-	/*FOR Products:*/
-	/*CREATE TABLE `product` (
-	  `product_code` int(11) NOT NULL,
-	  `delivery_date` datetime NOT NULL,
-	  `date_received` datetime NOT NULL,
-	  `delivery_charge` varchar(45) NOT NULL,
-	  `DR_SI` varchar(100) NOT NULL,
-	  `quantity` int(11) NOT NULL,
-	  `product_description` varchar(999) DEFAULT NULL,
-	  `unit_price` double NOT NULL,
-	  `discount` double DEFAULT NULL,
-	  `total_amount` double DEFAULT NULL,
-	  `checkNumber` varchar(45) NOT NULL,
-	  `supplier` varchar(200) NOT NULL,
-	  PRIMARY KEY (`product_code`)
-	) ENGINE=InnoDB DEFAULT CHARSET=utf8;*/
+	/*FOR Products:
+	FOR Products:
+		CREATE TABLE `Product` (
+		  `product_code` int(11) NOT NULL,
+		  `supplier` varchar(200) NOT NULL,
+		  `delivery_date` datetime NOT NULL,
+		  `date_received` datetime NOT NULL,
+		  `delivery_charge` varchar(45) NOT NULL,
+		  `DR_SI` varchar(100) NOT NULL,
+		  `quantity` int(11) NOT NULL,
+		  `product_description` varchar(999) DEFAULT NULL,
+		  `unit_price` double NOT NULL,
+		  `discount_add` double DEFAULT NULL,
+		  `total_amount` double DEFAULT NULL,
+		  `mode_of_payment` varchar(45) NOT NULL,
+		  PRIMARY KEY (`product_code`)
+		) ENGINE=InnoDB DEFAULT CHARSET=latin1;*/
 
 	String GET_ALL_PRODUCTS = "select * from product";
 	String SEARCH_PRODUCT = "select * from product where product_code=?";
 	String UPDATE_PRODUCT = "update product set delivery_date=?,"
 			+ "date_received=?," + "delivery_charge=?," + "DR_SI=?,"
 			+ "quantity=?," + "product_description=?," + "unit_price=?,"
-			+ "discount=?," + "total_amount=?," + "mode_of_payment=?,"
+			+ "discount_add=?," + "total_amount=?," + "mode_of_payment=?,"
 			+ "supplier=?" + "where product_code=?";
 	String ADD_PRODUCT = "insert into Product(" + "delivery_date,"
 			+ "date_recieved, " + "delivery_charge," + "DR_SI, " + "quantity,"
-			+ "product_description," + "unit_price," + "discount,"
+			+ "product_description," + "unit_price," + "discount_add,"
 			+ "total_amount," + "mode_of_payment," + "supplier,"
 			+ "product_code" + ") values(?,?,?,?,?,?,?,?,?,?,?,?)";
 	String SEARCH_FOR_PRODUCTS = "select * from product where delivery_date like ? OR "
@@ -106,7 +107,7 @@ public interface SQLCommands {
 			+ "quantity like ? OR "
 			+ "product_description like ? OR "
 			+ "unit_price like ? OR "
-			+ "discount like ? OR "
+			+ "discount_add like ? OR "
 			+ "total_amount like ? OR "
 			+ "mode_of_payment like ? OR "
 			+ "supplier like ? OR"
