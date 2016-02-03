@@ -25,6 +25,10 @@
 	<p>Unit Price<input type="number" name="unit_price" value="0" onblur="recalculateSum();" id="prc" required="required"/>
 	<p>Discounts<input type="number" name="discount"/></p>
 	<p>Total Amount <input id="Total" value="0"/> </p>
+	<p>Mode of Payment</p>
+	 <input type="radio" name="mode_of_payment" value="cash" checked>Cash <br>
+	 <input type="radio" name="mode_of_payment" value="check">Check<br>
+	<!-- Lalabas lang check number if pinili sa M.O.P. ay check :)  -->
 	<p>Check Number:<input type="text" name="check"/></p>
 
 <p><input type="submit" value="add"/>

@@ -114,7 +114,7 @@
                                     <strong>Add Item</strong>
                                 </h4>
                                 <p>Choose this to add items</p>
-                                <a href="additems.jsp" class="btn btn-light">Add</a>
+                                <a href="addProduct.jsp" class="btn btn-light">Add</a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
