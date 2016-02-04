@@ -53,10 +53,12 @@ public class addItemServlet extends HttpServlet {
 				if (SQLOperations.addItem(productbean, connection)) {
 					System.out.println("item successfully inserted");
 					request.setAttribute("productbean", productbean);
+					//TODO
 					getServletContext().getRequestDispatcher(
 							"/additemstatus.jsp?status=true").forward(request,
 							response);
 				} else {
+					//TODO
 					getServletContext().getRequestDispatcher(
 							"/additemstatus.jsp?status=false").forward(request,
 							response);
