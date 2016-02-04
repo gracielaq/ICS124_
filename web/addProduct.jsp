@@ -12,8 +12,6 @@
 </head>
 <body>
 <form action="addItems.html" method="post">
-
-	
 	<p>Product Code<input type="number" name="product_code" required="required"/></p>
 	<p>Delivery Date<input type="date" name="delivery_date" required="required"/></p>
 	<p>Date Received<input type="date" name="date_received" required="required"/></p>
@@ -29,16 +27,9 @@
 	 <input type="radio"  onclick="javascript:yesnoCheck();" name="mode_of_payment" value="cash" id="noCheck">Cash <br>
 	 <input type="radio" onclick="javascript:yesnoCheck();" name="mode_of_payment" value="check" id="yesCheck" >Check<br>
 	 <div id="ifYes" style="visibility:hidden">
-    <p>Check Number:<input type="text" name="check"/></p>
-</div>
-	<!-- Lalabas lang check number if pinili sa M.O.P. ay check :)  -->
-	
-
-
-
-
-
-<p><input type="submit" value="add"/>
+   	 	<p>Check Number:<input type="text" name="check"/></p>
+	 </div>
+	<p><input type="submit" value="add"/>
 </form>
 <script type="text/javascript">
 

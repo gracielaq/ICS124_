@@ -13,8 +13,8 @@ import java.sql.*;
 
 import edu.ust.erdbms.utility.sql.SQLOperations;
 
-@WebServlet("/list.html")
-public class ListItemsServlet extends HttpServlet {
+@WebServlet("/listProductsSell.html")
+public class ListProdForSelling extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private Connection connection;
@@ -40,11 +40,9 @@ public class ListItemsServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
 			if (connection != null) {
-				ResultSet rs = SQLOperations.getAllItems(connection);
-				int totalQuantity =SQLOperations.getTotalQuantity(connection);
-				request.setAttribute("totalQuantity",totalQuantity);
+				ResultSet rs = SQLOperations.getAllProducts(connection);
 				request.setAttribute("productrecords", rs);
-				getServletContext().getRequestDispatcher("/listItems.jsp")
+				getServletContext().getRequestDispatcher("/listProductsForSelling.jsp")
 						.forward(request, response);
 			} else {
 				System.out.println("Invalid Connection resource");

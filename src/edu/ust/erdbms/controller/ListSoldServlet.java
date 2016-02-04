@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.ust.erdbms.utility.sql.SQLOperations;
 
-/**
- * Servlet implementation class ListSoldServlet
- */
 @WebServlet("/ListSoldServlet")
 public class ListSoldServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -150,7 +150,8 @@
                                     <strong>Sell</strong>
                                 </h4>
                                 <p>Click Sell to sell products.</p>
-                                <a href="list.html" class="btn btn-light">Sell</a>
+                                
+                                	<a href="listProductsSell.html" class="btn btn-light">Sell</a>
                             </div>
                         </div>
                     </div>
