@@ -19,14 +19,14 @@ package edu.ust.erdbms.model;
  */
 
 public class ProductBean {
-	private int product_code, quantity;
-	private double unit_price, discount_add, total_amount;
+	private int product_code, quantity, DR_SI,check_no;
+	private double unit_price, discount_add, total_amount,delivery_charge;
 	private java.sql.Date delivery_date, date_recieved;
-	private String delivery_charge, DR_SI, product_description,
+	private String  product_description,
 			mode_of_payment, supplier;
 
 	public void compute() {
-		// (QTY * Unit Price) ­ (QTY* Unit Price*Discount)
+		// (QTY * Unit Price) ï¿½ (QTY* Unit Price*Discount)
 		setTotal_amount((getQuantity() * getUnit_price())
 				- (getQuantity() * getUnit_price() * getDiscount_add()));
 	}
@@ -81,20 +81,20 @@ public class ProductBean {
 		this.date_recieved = date_recieved;
 	}
 
-	public String getDelivery_charge() {
+	public double getDelivery_charge() {
 		return delivery_charge;
 	}
 
-	public void setDelivery_charge(String delivery_charge) {
-		this.delivery_charge = delivery_charge;
+	public void setDelivery_charge(double delivery_charge2) {
+		this.delivery_charge = delivery_charge2;
 	}
 
-	public String getDR_SI() {
+	public int getDR_SI() {
 		return DR_SI;
 	}
 
-	public void setDR_SI(String dR_SI) {
-		DR_SI = dR_SI;
+	public void setDR_SI(int DR_SI2) {
+		DR_SI = DR_SI2;
 	}
 
 	public String getProduct_description() {
@@ -128,5 +128,15 @@ public class ProductBean {
 	public void setDiscount_add(double discount_add) {
 		this.discount_add = discount_add;
 	}
+
+	public int getCheck_no() {
+		return check_no;
+	}
+
+	public void setCheck_no(int check_no) {
+		this.check_no = check_no;
+	}
+
+	
 
 }
