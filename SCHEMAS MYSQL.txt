@@ -7,7 +7,7 @@ USE ProductsDB;
 
 /****** Object:  Table dbo.Product    Script Date: 11/11/2015 22:00:43 ******/
 
-FOR Products:
+/*FOR Products:*/
 CREATE TABLE `Product` (
   `product_code` int(11) NOT NULL,
   `supplier` varchar(200) NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE `Product` (
   PRIMARY KEY (`product_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
- FOR SELL:
+ /*FOR SELL:*/
 	CREATE TABLE `Sell` (
   `product_code` int(11) NOT NULL,
   `unit_price` double NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE `accounts_admin` (
 
 
   
-FOR LOGINS(staff) :
+/*FOR LOGINS(staff) :*/
 CREATE TABLE `accounts_staff` (
   `username` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE `Product_old` (
   `discount_add` double DEFAULT NULL,
   `total_amount` double DEFAULT NULL,
   `mode_of_payment` varchar(45) NOT NULL,
-  PRIMARY KEY (`product_code`),
+  PRIMARY KEY (`product_code`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
