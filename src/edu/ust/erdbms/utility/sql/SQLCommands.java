@@ -11,25 +11,40 @@ public interface SQLCommands {
 	/*FOR SOLD*/
 
 	  /*FOR SELL:
-	   CREATE TABLE `Sell` (
-		  `product_code` int(11) NOT NULL,
-		  `unit_price` double NOT NULL,
-		  `quantity` int(11) NOT NULL,
-		  `product_description` varchar(999) DEFAULT NULL,
-		  `discount` double DEFAULT NULL,
-		  `total_amount` double DEFAULT NULL,
-		  `note_quantity` int(11) DEFAULT NULL,
-		  `note_description` varchar(999) DEFAULT NULL,
-		  `customer_name` varchar(200) NOT NULL,
-		  `tin` varchar(200) NOT NULL,
-		  `address` varchar(200) NOT NULL,
-		  `date` datetime NOT NULL,
-		  `mode_of_payment` varchar(45) NOT NULL,
-		  PRIMARY KEY (`product_code`)
-		) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+	  CREATE TABLE `Sell` (
+  `product_code` int(11) NOT NULL,
+  `unit_price` double NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `product_description` varchar(999) DEFAULT NULL,
+  `discount_sell` double DEFAULT NULL,
+  `total_amount` double DEFAULT NULL,
+  `note_quantity` int(11) DEFAULT NULL,
+  `note_description` varchar(999) DEFAULT NULL,
+  `customer_name` varchar(200) NOT NULL,
+  `tin` varchar(200) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `date` datetime NOT NULL,
+  `mode_of_payment` varchar(45) NOT NULL,
+  PRIMARY KEY (`product_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 	*/
-	
+	  String ADD_SOLD_PRODUCT = "insert into sell("
+			  + "product_code,"
+			  + "unit_price, "
+			  + "quantity,"
+			  + "product_description, "
+			  + "discount_sell,"
+			  + "total_amount,"
+			  +"note_quantity,"
+			  + "note_description,"
+			  + "customer_name,"
+			  + "tin,"
+			  + "address,"
+			  + "date,"
+			  + "mode_of_payment"
+			  + ") values(?,?,?,?,?,?,?,?,?,?,?)";
+
 	String GET_ALL_SOLD_PRODUCTS = "select * from sell";
 	String SEARCH_SOLD_PRODUCT = "select * from sell where product_code=?";
 	String UPDATE_SOLD_PRODUCT = "update sell set unit_price=?,"
@@ -37,22 +52,7 @@ public interface SQLCommands {
 			+ "total_amount=?," + "note_quantity=?," + "note_description=?,"
 			+ "customer_name=?," + "tin=?," + "address=?,"
 			+ "date=?, checkNumber=?" + "where product_code=?";
-	String ADD_SOLD_PRODUCT = "insert into Product(" 
-			+ "product_code,"
-			+ "unit_price, " 
-			+ "quantity," 
-			+ "product_description, "
-			+ "discount_sell,"
-			+ "total_amount,"
-			+"note_quantity,"
-			+ "note_description,"
-			+ "customer_name,"
-			+ "tin," 
-			+ "address,"
-			+ "date,"
-			+ "mode_of_payment" 
-			+ ") values(?,?,?,?,?,?,?,?,?,?,?)";
-	
+
 	String SEARCH_FOR_SOLD_PRODUCTS = "select * from product where"
 			+ " delivery_date like ? OR "
 			+ "date_received like ? OR "
@@ -65,7 +65,7 @@ public interface SQLCommands {
 			+ "total_amount like ? OR "
 			+ "checkNumber like ? OR "
 			+ " product_code like ?";
-
+	String GENERATE_REPORT_QUERY = "SELECT * FROM student where date >= ? AND date <  ?";
 
 	
 	
@@ -112,4 +112,6 @@ public interface SQLCommands {
 			+ "mode_of_payment like ? OR "
 			+ "supplier like ? OR"
 			+ " product_code like ?";
+	String DELETE_PRODUCT ="delete from product where product_code=?";
+
 }
