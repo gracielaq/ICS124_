@@ -184,7 +184,7 @@ public class SQLOperations implements SQLCommands {
 			pstmt.setDate(1, product.getDelivery_date());
 			pstmt.setDate(2, product.getDate_recieved());
 			pstmt.setString(3, product.getDelivery_charge());
-			pstmt.setString(4, product.getDR_SI());
+			pstmt.setInt(4, product.getDR_SI());
 			pstmt.setInt(5, product.getQuantity());
 			pstmt.setString(6, product.getProduct_description());
 			pstmt.setDouble(7, product.getUnit_price());
@@ -223,8 +223,8 @@ public class SQLOperations implements SQLCommands {
 
 			pstmt.setDate(1, product.getDelivery_date());
 			pstmt.setDate(2, product.getDate_recieved());
-			pstmt.setString(3, product.getDelivery_charge());
-			pstmt.setString(4, product.getDR_SI());
+			pstmt.setDouble(3, product.getDelivery_charge());
+			pstmt.setInt(4, product.getDR_SI());
 			pstmt.setInt(5, product.getQuantity());
 			pstmt.setString(6, product.getProduct_description());
 			pstmt.setDouble(7, product.getUnit_price());
@@ -233,6 +233,7 @@ public class SQLOperations implements SQLCommands {
 			pstmt.setString(10, product.getMode_of_payment());
 			pstmt.setString(11, product.getSupplier());
 			pstmt.setInt(12, product.getProduct_code());
+			pstmt.setInt(13, product.getCheck_no());
 			pstmt.execute();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - addProduct: "
