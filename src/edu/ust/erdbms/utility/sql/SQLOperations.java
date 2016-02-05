@@ -275,19 +275,30 @@ public class SQLOperations implements SQLCommands {
 	}
 
 	// TO DO
-	/*
-	 * public static synchronized int deleteItem(int id, Connection connection)
-	 * { int updated = 0;
-	 * 
-	 * try { connection.setAutoCommit(false); PreparedStatement pstmt =
-	 * connection.prepareStatement(DELETE_ITEM); pstmt.setInt(1, id); updated =
-	 * pstmt.executeUpdate(); connection.commit(); } catch (SQLException sqle) {
-	 * System.out.println("SQLException - deleteITEM: " + sqle.getMessage());
-	 * 
-	 * try { connection.rollback(); } catch (SQLException sql) {
-	 * System.err.println("Error on Delete Connection Rollback - " +
-	 * sql.getMessage()); } return updated; } return updated; }
-	 */
+	
+	public static synchronized int deleteProduct(int id, Connection connection) {
+		int updated = 0;
+		try {
+			connection.setAutoCommit(false);
+			PreparedStatement pstmt = connection.prepareStatement(DELETE_PRODUCT);
+			pstmt.setInt(1, id);
+			updated = pstmt.executeUpdate();
+			connection.commit();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - deleteITEM: "
+					+ sqle.getMessage());
+
+			try {
+				connection.rollback();
+			} catch (SQLException sql) {
+				System.err.println("Error on Delete Connection Rollback - "
+						+ sql.getMessage());
+			}
+			return updated;
+		}
+		return updated;
+	}
+	 
 	public static boolean loginCheck(String username, String password,
 			Connection connection) {
 		boolean login = false;
